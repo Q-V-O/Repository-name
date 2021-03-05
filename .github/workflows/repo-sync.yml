@@ -24,7 +24,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/wuzhi1/MyActions.git"
+          source_repo: "https://github.com/wuzhi01/MyActions.git"
           source_branch: "main"
           destination_branch: "main"
           github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
@@ -33,7 +33,7 @@ jobs:
         uses: Yikun/hub-mirror-action@master
         if: env.dst_key
         with:
-          src: github/wuzhi1
+          src: github/wuzhi01
           dst: gitee/shuye72
           static_list: "MyActions"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
