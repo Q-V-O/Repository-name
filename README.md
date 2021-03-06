@@ -29,7 +29,7 @@
 
 喜马拉雅极速版专属环境变量[点击查看](backup/xmly/xmly.md)
 
-lxk0301-环境变量合集（Secrets）配置[点击查看](backup/githubAction.md)
+lxk0301-环境变量合集（Secrets）配置[点击查看](secrets.md)
 
 
 > 具体如何取 cookie 如何配置,可参考 [lxk0301 的获取京东Cookies教程](backup/GetJdCookie.md)
