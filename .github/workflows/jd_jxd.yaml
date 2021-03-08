@@ -47,4 +47,5 @@ jobs:
                   QYWX_AM: ${{ github.event.client_payload.QYWX_AM || secrets.QYWX_AM }}
                   PUSH_PLUS_TOKEN: ${{ github.event.client_payload.PUSH_PLUS_TOKEN || secrets.PUSH_PLUS_TOKEN }}
                   PUSH_PLUS_USER: ${{ github.event.client_payload.PUSH_PLUS_USER || secrets.PUSH_PLUS_USER }}
+                  JD_JXD_EXCHANGE: ${{ github.event.client_payload.JD_JXD_EXCHANGE || secrets.JD_JXD_EXCHANGE }}
                   SYNCURL: https://github.com/wuzhi01/MyActions/raw/main/jd_jxd.js
