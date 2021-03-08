@@ -21,7 +21,8 @@
 10 8,21 1-8/1 3 * node /scripts/jd_xmf.js >> /scripts/logs/jd_xmf.log 2>&1
 # 京小兑
 30 9 * * * node /scripts/jd_jxd.js >> /scripts/logs/jd_jxd.log 2>&1
-
+# 极速版春香节红包
+30 9 * * * node /scripts/jd_speed_redpocke.js >> /scripts/logs/jd_speed_redpocke.log 2>&1
 
 ##############长期活动##############
 # 签到
