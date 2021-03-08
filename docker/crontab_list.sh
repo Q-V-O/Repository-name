@@ -9,6 +9,8 @@
 0 0,9,12 * * * node /scripts/jd_beauty.js >> /scripts/logs/jd_beauty.log 2>&1
 # 京东国际盲盒
 0 9,12,20,21 * * * node /scripts/jd_global_mh.js >> /scripts/logs/jd_global_mh.log 2>&1
+# 京东国际
+5 9,12,20,21 8-31 3 * node /scripts/jd_global.js >> /scripts/logs/jd_global.log 2>&1
 # 她的节享京豆
 10 8,21 1-8/1 3 * node /scripts/jd_firecrackers.js >> /scripts/logs/jd_firecrackers.log 2>&1
 # 母婴跳一跳二期
