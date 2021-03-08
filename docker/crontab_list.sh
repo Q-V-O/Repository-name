@@ -17,6 +17,8 @@
 10 8,21 1-8/1 3 * node /scripts/jd_nzmh.js >> /scripts/logs/jd_nzmh.log 2>&1
 # 小魔方
 10 8,21 1-8/1 3 * node /scripts/jd_xmf.js >> /scripts/logs/jd_xmf.log 2>&1
+# 京小兑
+30 9 * * * node /scripts/jd_jxd.js >> /scripts/logs/jd_jxd.log 2>&1
 
 
 ##############长期活动##############
