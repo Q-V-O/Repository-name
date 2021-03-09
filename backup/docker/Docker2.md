@@ -66,7 +66,7 @@
     --restart unless-stopped \
     -v /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower -c \
-    --schedule "0 19 * * * *" \
+    --schedule "30 30 20 * * *" \
     jd
 
 ### 注意：
