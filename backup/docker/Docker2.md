@@ -23,28 +23,32 @@
 3.创建容器
 
 	docker run -dit \
-	-v /你想存放的路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径`\
-	-v /你想存放的路径/jd/log:/jd/log `# 日志保存目录，冒号左边请修改为你想存放的路径` \
-	-v /你想存放的路径/jd/scripts:/jd/scripts  `# 脚本文件目录，映射脚本文件到安装路径` \
-    -p 5678:5678 \
-	--name jd \
-	--hostname jd \
-	--restart always \
-	shuye72/jd-base:gitee
+		-v /你想存放的路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径`\
+		-v /你想存放的路径/jd/log:/jd/log `# 日志保存目录，冒号左边请修改为你想存放的路径` \
+		-v /你想存放的路径/jd/scripts:/jd/scripts  `# 脚本文件目录，映射脚本文件到安装路径` \
+	    -p 5678:5678 \
+	    -e ENABLE_HANGUP=true \
+	    -e ENABLE_WEB_PANEL=true \
+		--name jd \
+		--hostname jd \
+		--restart always \
+		shuye72/jd-base:gitee
 
 注②：如果是旁路由，建议用`--network host \`代替`-p 5678:5678 \`这一行，此时控制面板为`http://<ip>:5678`
 
 4.多容器示例
 
 	docker run -dit \
-	-v /你想存放的路径/jd1/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径`\
-	-v /你想存放的路径/jd1/log:/jd/log `# 日志保存目录，冒号左边请修改为你想存放的路径` \
-	-v /你想存放的路径/jd/scripts:/jd/scripts  `# 脚本文件目录，映射脚本文件到安装路径` \
-    -p 5679:5678 \
-	--name jd1 \
-	--hostname jd1 \
-	--restart always \
-	shuye72/jd-base:gitee
+		-v /你想存放的路径/jd1/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径`\
+		-v /你想存放的路径/jd1/log:/jd/log `# 日志保存目录，冒号左边请修改为你想存放的路径` \
+		-v /你想存放的路径/jd/scripts:/jd/scripts  `# 脚本文件目录，映射脚本文件到安装路径` \
+	    -p 5679:5678 \
+		-e ENABLE_HANGUP=true \
+		-e ENABLE_WEB_PANEL=true \
+		--name jd1 \
+		--hostname jd1 \
+		--restart always \
+		shuye72/jd-base:gitee
 
 注③：如果是旁路由，建议用`--network host \`代替`-p 5679:5678 \`这一行，此时控制面板为`http://<ip>:5679`
 
@@ -62,7 +66,7 @@
     --restart unless-stopped \
     -v /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower -c \
-    --schedule "0 3 * * * *" \
+    --schedule "0 19 * * * *" \
     jd
 
 ### 注意：

@@ -144,6 +144,8 @@ docker run -dit \
     -v $LOG_PATH:/jd/log \
     --name $CONTAINER_NAME \
     --hostname jd \
+    -e ENABLE_HANGUP=true \
+    -e ENABLE_WEB_PANEL=true \
     --restart always \
     --network host \
     $DOCKER_IMG_NAME:$TAG
