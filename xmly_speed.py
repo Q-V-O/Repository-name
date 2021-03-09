@@ -1,10 +1,3 @@
-'''
-Author: whyour
-Github: https://github.com/whyour
-Date: 2020-11-19 23:25:22
-LastEditors: whyour
-LastEditTime: 2021-01-18 13:46:46
-'''
 import json
 import rsa
 import base64
@@ -45,7 +38,7 @@ if "AUTO_TAKE_OUT" in os.environ:
 
 # 自定义设备命名,非必须 ;devices=["iPhone7P","huawei"];与cookiesList对应
 devices = []
-notify_time = 19                            # 通知时间,24小时制,默认19
+notify_time = 23                            # 通知时间,24小时制,默认19
 XMLY_ACCUMULATE_TIME = 1                    # 希望刷时长的,此处置1,默认打开;关闭置0
 UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iting/1.0.12 kdtunion_iting/1.0 iting(main)/1.0.12/ios_1"
 # 非iOS设备的需要的自行修改,自己抓包 与cookie形式类似
@@ -1009,6 +1002,25 @@ def task_out(cookies, body):
     except:
         print("网络请求异常,为避免GitHub action报错,直接跳过")
 
+def user_info(cookies):
+    print("\n【用户信息】")
+    headers = {
+        'Host': 'mobile.ximalaya.com',
+        'Accept': '*/*',
+        'User-Agent': 'ting_v2.1.3_c5(CFNetwork, iOS 14.4, iPhone13,2)',
+        'Accept-Language': 'zh-cn',
+        'Accept-Encoding': 'gzip, deflate, br',
+    }
+    currentTimeMillis = int(time.time()*1000)-2
+    try:
+        response = requests_session().get(
+            f'https://mobile.ximalaya.com/fmobile-user/homePage/ts-{currentTimeMillis}', headers=headers, cookies=cookies).json()
+        print(response)
+        if response['ret'] == 0:
+            return response
+    except:
+        print("网络请求异常,为避免GitHub action报错,直接跳过")
+
 def run():
     print(f"喜马拉雅极速版 (https://github.com/Zero-S1/xmly_speed/blob/master/xmly_speed.md ) ,欢迎打赏¯\(°_o)/¯")
     mins, date_stamp, _datatime, _notify_time = get_time()
@@ -1017,6 +1029,7 @@ def run():
     for k, v in enumerate(cookiesList):
         print(f">>>>>>>【账号开始{k+1}】\n")
         cookies = str2dict(v)
+        user_info_res = user_info(cookies)
         if XMLY_ACCUMULATE_TIME == 1:
             saveListenTime(cookies, date_stamp)
             listenData(cookies, date_stamp)
@@ -1039,7 +1052,7 @@ def run():
         else:
             device = f"设备{k+1}"
 
-        table.append((device, total, todayTotal,
+        table.append((user_info_res['nickname'], total, todayTotal,
                       historyTotal, continuousDays,))
 
         if autoTakeOut and total >= amount:
@@ -1049,9 +1062,9 @@ def run():
                         "accountNumber": pay_info["accountNumber"], "amount": amount, "takeOutType": takeOutType}
                 task_out_res = task_out(cookies=cookies, body=body)
                 if task_out_res:
-                    send(title=title, content=f"{device} 提现到账户【{pay_info['accountNumber']}】20元成功")
+                    send(title=title, content=f"{user_info_res['nickname']} 提现到账户【{pay_info['accountNumber']}】20元成功")
             else:
-                send(title=title, content=f"请先手动填写【账号{k+1}】支付宝账号提现一次")
+                send(title=title, content=f"请先手动填写【user_info_res['nickname']】支付宝账号提现一次")
         print("###"*20)
         print("\n"*4)
 
@@ -1059,7 +1072,7 @@ def run():
     # if 1:
         message = ''
         for i in table:
-            message += f"【设备】：{i[0].replace(' ',''):<9}\n"
+            message += f"【账户】：{i[0].replace(' ',''):<9}\n"
             message += f"【当前剩余】：{i[1]:<6.2f}\n"
             message += f"【今天】：＋{i[2]:<4.2f}\n"
             message += f"【历史】：{i[3]:<7.2f}\n"
