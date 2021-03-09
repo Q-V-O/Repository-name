@@ -26,9 +26,9 @@
 		-v /你想存放的路径/jd/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径`\
 		-v /你想存放的路径/jd/log:/jd/log `# 日志保存目录，冒号左边请修改为你想存放的路径` \
 		-v /你想存放的路径/jd/scripts:/jd/scripts  `# 脚本文件目录，映射脚本文件到安装路径` \
-	    -p 5678:5678 \
-	    -e ENABLE_HANGUP=true \
-	    -e ENABLE_WEB_PANEL=true \
+	        -p 5678:5678 \
+	        -e ENABLE_HANGUP=true \
+	        -e ENABLE_WEB_PANEL=true \
 		--name jd \
 		--hostname jd \
 		--restart always \
@@ -42,7 +42,7 @@
 		-v /你想存放的路径/jd1/config:/jd/config `# 配置保存目录，冒号左边请修改为你想存放的路径`\
 		-v /你想存放的路径/jd1/log:/jd/log `# 日志保存目录，冒号左边请修改为你想存放的路径` \
 		-v /你想存放的路径/jd/scripts:/jd/scripts  `# 脚本文件目录，映射脚本文件到安装路径` \
-	    -p 5679:5678 \
+	        -p 5679:5678 \
 		-e ENABLE_HANGUP=true \
 		-e ENABLE_WEB_PANEL=true \
 		--name jd1 \
@@ -62,12 +62,12 @@
 安装`containrrr/watchtower`可以自动更新容器
 
     docker run -d \
-    --name watchtower \
-    --restart unless-stopped \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    containrrr/watchtower -c \
-    --schedule "30 30 20 * * *" \
-    jd
+	    --name watchtower \
+	    --restart unless-stopped \
+	    -v /var/run/docker.sock:/var/run/docker.sock \
+	    containrrr/watchtower -c \
+	    --schedule "30 30 20 * * *" \
+	    jd
 
 ### 注意：
 1. 请在创建后使用`docker logs -f jd`查看创建日志，直到出现容器启动成功…字样才代表启动成功（不是以此结束的请更新镜像），按`Ctrl+C`退出查看日志。
