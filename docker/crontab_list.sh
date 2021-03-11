@@ -5,18 +5,16 @@
 
 # 百变大咖秀第二期
 22 23,0,9 * * * node /scripts/jd_entertainment.js >> /scripts/logs/jd_entertainment.log 2>&1
-# 京东国际盲盒
-0 9,12,20,21 * * * node /scripts/jd_global_mh.js >> /scripts/logs/jd_global_mh.log 2>&1
-# 京东国际
-5 9,12,20,21 8-31 3 * node /scripts/jd_global.js >> /scripts/logs/jd_global.log 2>&1
 # 小魔方
 10 8,21 1-8/1 3 * node /scripts/jd_xmf.js >> /scripts/logs/jd_xmf.log 2>&1
 # 京小兑
-30 9 * * * node /scripts/jd_jxd.js >> /scripts/logs/jd_jxd.log 2>&1
+30 9,15 * * * node /scripts/jd_jxd.js >> /scripts/logs/jd_jxd.log 2>&1
 # 极速版春香节红包
 30 9 * * * node /scripts/jd_speed_redpocke.js >> /scripts/logs/jd_speed_redpocke.log 2>&1
 # 超级直播间红包雨
 30,31 20-23/1 9,12 3 * node /scripts/jd_live_redrain.js >> /scripts/logs/jd_live_redrain.log 2>&1
+# 女装盲盒
+2 8,20 9-20/1 3 * * node /scripts/jd_nzmh.js >> /scripts/logs/jd_nzmh.log 2>&1
 
 ##############长期活动##############
 # 签到
