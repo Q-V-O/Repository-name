@@ -3,8 +3,6 @@
 
 ##############短期活动##############
 
-# 百变大咖秀第二期
-22 23,0,9 * * * node /scripts/jd_entertainment.js >> /scripts/logs/jd_entertainment.log 2>&1
 # 小魔方
 10 8,21 1-8/1 3 * node /scripts/jd_xmf.js >> /scripts/logs/jd_xmf.log 2>&1
 # 京小兑
