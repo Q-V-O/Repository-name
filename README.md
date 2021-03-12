@@ -1,4 +1,4 @@
-# 特别声明:以后再有这种情况直接关issue，没劲[点击查看](backup/1/1.md)
+# 特别声明:同步sendNotify.js     pushplus推送通知已更换成最新。请在 http://www.pushplus.plus/ 更换新的token 。
 
 ## 特别声明: 
 
