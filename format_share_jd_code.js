@@ -201,8 +201,8 @@ function showFormatMsg(shareCodeObj) {
   formatShareCodesForLinux(
     shareCodeObj.Jdcfd,
     "京喜财富岛",
-    "MyJdcfd",
-    "ForOtherJdcfd"
+    "MyCFD",
+    "ForOtherMyCFD"
   );
   formatShareCodesForLinux(
     shareCodeObj.Global,
