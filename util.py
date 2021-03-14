@@ -28,6 +28,8 @@ TG_PROXY_PORT = ''                                                        # tg�
 DD_BOT_ACCESS_TOKEN = ''                                                  # 钉钉机器人的DD_BOT_ACCESS_TOKEN; secrets可填
 DD_BOT_SECRET = ''                                                        # 钉钉机器人的DD_BOT_SECRET; secrets可填
 QYWX_APP = ''                                                             # 企业微信应用的QYWX_APP; secrets可填 参考http://note.youdao.com/s/HMiudGkb
+PUSH_PLUS_TOKEN = ''                                                      # pushplus推送的token; secrets可填
+PUSH_PLUS_USER = ''                                                       # pushplus群组推送的群组编码; secrets可填
 
 notify_mode = []
 
@@ -44,6 +46,11 @@ if "DD_BOT_ACCESS_TOKEN" in os.environ and os.environ["DD_BOT_ACCESS_TOKEN"] and
     DD_BOT_SECRET = os.environ["DD_BOT_SECRET"]
 if "QYWX_APP" in os.environ and os.environ["QYWX_APP"]:
     QYWX_APP = os.environ["QYWX_APP"]
+if "PUSH_PLUS_TOKEN" in os.environ and os.environ["PUSH_PLUS_TOKEN"]:
+    PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
+    if "PUSH_PLUS_USER" in os.environ["PUSH_PLUS_USER"]:
+        PUSH_PLUS_USER = os.environ["PUSH_PLUS_USER"]
+
 
 if BARK:
     notify_mode.append('bark')
@@ -60,6 +67,9 @@ if DD_BOT_ACCESS_TOKEN and DD_BOT_SECRET:
 if QYWX_APP:
     notify_mode.append('qywxapp_bot')
     print("企业微信应用 推送打开")
+if PUSH_PLUS_TOKEN:
+    notify_mode.append('pushplus')
+    print("pushplus 推送打开")
 
 def bark(title, content):
     print("\n")
@@ -212,6 +222,23 @@ def qywxapp_bot(title, content):
     else:
         print('推送失败！')
 
+def pushplus(title, content):
+    print("\n")
+    if not PUSH_PLUS_TOKEN:
+        print("PushPlus的token未设置!!\n取消推送")
+        return
+    print("PushPlus推送启动")
+    if PUSH_PLUS_USER:
+        response = requests.post(
+            f"http://pushplus.hxtrip.com/send?token={PUSH_PLUS_TOKEN}&title={title}&content={content}&template=html&topic={PUSH_PLUS_USER}").json()
+    else:
+        response = requests.post(
+            f"http://pushplus.hxtrip.com/send?token={PUSH_PLUS_TOKEN}&title={title}&content={content}&template=html").json()
+    if response['code'] == 200:
+        print('推送成功！')
+    else:
+        print('推送失败！')
+
 def change_user_id(desp):
     qywx_app_params = QYWX_APP.split(',')
     if qywx_app_params[2]:
@@ -265,6 +292,12 @@ def send(title, content):
                 qywxapp_bot(title=title, content=content)
             else:
                 print('未启用 企业微信应用推送')
+            continue
+        elif i == 'pushplus':
+            if PUSH_PLUS_TOKEN:
+                pushplus(title=title, content=content)
+            else:
+                print('未启用 pushplus推送')
             continue
         else:
             print('此类推送方式不存在')
