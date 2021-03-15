@@ -19,6 +19,9 @@
 35 6,22 * * * node /scripts/jd_global.js >> /scripts/logs/jd_global.log 2>&1
 #京东众筹许愿池
 10 10,15 13-20 3 * node /scripts/jd_wish.js >> /scripts/logs/jd_wish.log 2>&1
+#手机尚学季
+20 11,23 * * * node /scripts/jd_xtg.js >> /scripts/logs/jd_xtg.log 2>&1
+
 ##############长期活动##############
 # 签到
 0 0,18 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
