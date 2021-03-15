@@ -1,4 +1,4 @@
-# 特别声明:同步sendNotify.js     pushplus推送通知已更换成最新。请在 http://www.pushplus.plus/ 更换新的token 。
+# 特别声明: 本仓库搬运各种js文件的唯一目的是对相关知识进行学习，严禁利用本仓库进行商业行为！
 
 ## 特别声明: 
 
