@@ -10,7 +10,7 @@
 # 极速版春香节红包
 30 9 * * * node /scripts/jd_speed_redpocke.js >> /scripts/logs/jd_speed_redpocke.log 2>&1
 # 超级直播间红包雨
-30,31 20-23/1 9,12 3 * node /scripts/jd_live_redrain.js >> /scripts/logs/jd_live_redrain.log 2>&1
+30,31 20-23/1 19 3 * node /scripts/jd_live_redrain.js >> /scripts/logs/jd_live_redrain.log 2>&1
 # 女装盲盒
 2 8,20 9-20/1 3 * * node /scripts/jd_nzmh.js >> /scripts/logs/jd_nzmh.log 2>&1
 #京东国际盲盒活动时间】2021年02月23日 起至 2021年03月31日 18:00:00
@@ -20,7 +20,9 @@
 #京东众筹许愿池
 10 10,15 13-20 3 * node /scripts/jd_wish.js >> /scripts/logs/jd_wish.log 2>&1
 #手机尚学季
-0 0,14 * * * node /scripts/jd_xtg.js >> /scripts/logs/jd_xtg.log 2>&1
+0 0,12 * * * node /scripts/jd_xtg.js >> /scripts/logs/jd_xtg.log 2>&1
+#母婴跳一跳
+10 3,15 17-24 3 * node /scripts/jd_jump_jump.js >> /scripts/logs/jd_jump_jump.log 2>&1
 
 ##############长期活动##############
 # 签到
