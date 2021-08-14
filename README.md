@@ -38,4 +38,10 @@ lxk0301-环境变量合集（Secrets）配置[点击查看](secrets.md)
 
 ### [如果你感觉上面的学不会，那么点这里可以走捷径](backup/docker/Docker2.1.md)
 
+###补充一下: 这个走捷径的命令里 下载的文件已经不存在了, 但上面库里是有这个文件的, 在 docker/jd-base.sh 直接下载到你部署的服务器. 直接 ./jd-base.sh 命令就行, 然后按照引导就能安装成功.
+安装完成后, 会有个web控制面板,会显示地址. 直接在浏览器输入就行. 里面是配置.
+如果没有执行权限, 就 chmod +x jd-base.sh 
+
+
+
 ### 三丶仓库fork数量上涨，建议加入[电报通知频道](https://t.me/joinchat/Uf-EARsmoLq4Lym3)或者收藏[Gitee库地址](https://gitee.com/shuye72/projects)，如若被删则第一时间能够收到最新消息。
